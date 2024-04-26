@@ -1,0 +1,19 @@
+%section
+  %h2.dataset_page_title= t('datasets.index.title')
+  %div.search_form
+    = form_tag datasets_path, method: :get, enforce_utf8: false do |form|
+      = text_field_tag 'prompt', params[:prompt], placeholder: t('datasets.index.form.inputs.label'), id: 'search-input', required: true
+      = submit_tag t('datasets.index.form.buttons.search'), id: 'submit-search', name: nil
+      = link_to t('datasets.index.links.reset'), root_path, class: 'reset_link'
+
+  %ul#search-results
+    - if @datasets.present?
+      - @datasets.each do |dataset|
+        %li= raw dataset.dig(:_highlightResult, :prompt, :value)
+        %hr
+      = paginate(current_page, @total_pages)
+      %li#total-records= "Total Records: #{@total_records}"
+    - else
+      %li= t('datasets.no_record_found')
+    
+

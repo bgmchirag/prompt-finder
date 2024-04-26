@@ -1,0 +1,16 @@
+en:
+  datasets:
+    index:
+      title: Search by prompt
+      form:
+        inputs:
+          label: Type the word
+        buttons:
+          search: Search
+      links:
+        reset: Reset
+    no_record_found: No record found    
+  pagination:
+    links:
+      next: Next
+      previous: Previous
